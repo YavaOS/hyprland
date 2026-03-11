@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Sets the specified image as the current background
+
+if [[ -z $1 ]]; then
+  echo "Usage: yavaos-theme-bg-set <path-to-image>" >&2
+  exit 1
+fi
+
+BACKGROUND="$1"
+CURRENT_BACKGROUND_LINK="$HOME/.config/yavaos/current/background"
+
+# Create symlink to the new background
+ln -nsf "$BACKGROUND" "$CURRENT_BACKGROUND_LINK"
+
+# Kill existing hyprpaper and start new one
+pkill -x hyprpaper
+# setsid uwsm-app -- hyprpaper -i "$CURRENT_BACKGROUND_LINK" -m fill >/dev/null 2>&1 &
+setsid uwsm-app -- hyprpaper >/dev/null 2>&1 &

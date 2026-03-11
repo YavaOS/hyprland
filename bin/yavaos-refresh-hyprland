@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Overwrite all the user configs in ~/.config/hypr with the YavaOS defaults.
+
+yavaos-refresh-config hypr/autostart.conf
+yavaos-refresh-config hypr/bindings.conf
+yavaos-refresh-config hypr/input.conf
+yavaos-refresh-config hypr/looknfeel.conf
+yavaos-refresh-config hypr/hyprland.conf

@@ -1,0 +1,9 @@
+# kubectl
+export KUBE_EDITOR=nvim
+source <(kubectl completion bash)
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# welcome
+fortune | cowsay -f /usr/share/cowsay/cows/eyes.cow | centerize | lolcat 
+export ANSIBLE_NOCOWS=1

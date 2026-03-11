@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Launch a floating terminal with the YavaOS logo presentation, then execute the command passed in, and finally end with the yavaos-show-done presentation.
+# Used by actions such as Update System.
+
+cmd="$*"
+exec setsid uwsm-app -- xdg-terminal-exec --app-id=org.yavaos.terminal --title=YavaOS -e bash -c "yavaos-show-logo; $cmd; if (( \$? != 130 )); then yavaos-show-done; fi"

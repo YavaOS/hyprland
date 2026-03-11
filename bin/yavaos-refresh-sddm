@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Refresh the SDDM theme from default
+
+sudo rm -rf /usr/share/sddm/themes/yavaos
+sudo cp -r $YAVAOS_PATH/config/sddm/yavaos /usr/share/sddm/themes/yavaos

@@ -1,0 +1,6 @@
+[SddmGreeterTheme]
+Name=YavaOS
+Description=Minimal login theme
+Author=YavaOS
+Type=sddm-theme
+Version=1.0

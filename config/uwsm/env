@@ -1,0 +1,11 @@
+# Changes require a restart to take effect.
+
+# Ensure Omarchy bins are in the path
+export YAVAOS_PATH=$HOME/.local/share/yavaos
+export PATH=$OMARCHY_PATH/bin:$PATH
+
+# Set default terminal and editor
+source ~/.config/uwsm/default
+
+# Activate mise if present on the system
+yavaos-cmd-present mise && eval "$(mise activate bash --shims)"

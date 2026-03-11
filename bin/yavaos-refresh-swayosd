@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Overwrite the user configs for swayosd (controls on-screen feedback for changing volume/songs etc) with the YavaOS defaults and restart the service.
+
+yavaos-refresh-config swayosd/config.toml
+yavaos-refresh-config swayosd/style.css
+yavaos-restart-swayosd

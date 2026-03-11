@@ -1,0 +1,7 @@
+source ~/.local/share/yavaos/config/bash/envs
+source ~/.local/share/yavaos/config/bash/shell
+source ~/.local/share/yavaos/config/bash/aliases
+source ~/.local/share/yavaos/config/bash/functions
+source ~/.local/share/yavaos/config/bash/init
+source ~/.local/share/yavaos/config/bash/tools
+[[ $- == *i* ]] && bind -f ~/.local/share/yavaos/config/bash/inputrc

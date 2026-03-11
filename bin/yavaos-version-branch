@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo $(git -C "$YAVAOS_PATH" rev-parse --abbrev-ref HEAD)

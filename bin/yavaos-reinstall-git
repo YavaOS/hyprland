@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+# Reinstall the YavaOS configuration directory from the git source.
+
+git clone "https://github.com/basecamp/yavaos.git" ~/.local/share/yavaos-new >/dev/null
+mv $YAVAOS_PATH ~/.local/share/yavaos-old
+mv ~/.local/share/yavaos-new $YAVAOS_PATH

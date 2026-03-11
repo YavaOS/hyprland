@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Overwrite the user configs for the Waybar menu bar with the YavaOS defaults and restart the service.
+
+yavaos-refresh-config waybar/config.jsonc
+yavaos-refresh-config waybar/style.css
+yavaos-restart-waybar

@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+# Overwrite all user configs with the YavaOS defaults.
+
+if (( EUID == 0 )); then
+  echo "Error: This script should not be run as root"
+  exit 1
+fi
+
+echo "Resetting all YavaOS configs"
+cp -R ~/.local/share/yavaos/config/* ~/.config/
+cp ~/.local/share/yavaos/config/bashrc ~/.bashrc
+echo '[[ -f ~/.bashrc ]] && . ~/.bashrc' | tee ~/.bash_profile >/dev/null
+
+$(bash $YAVAOS_PATH/install/config/theme.sh)
+
+yavaos-refresh-limine
+yavaos-refresh-plymouth
+yavaos-nvim-setup
