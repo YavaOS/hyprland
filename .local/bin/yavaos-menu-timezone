@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# yavaos:summary=Select and set the system timezone
+# yavaos:group=menu
+# yavaos:name=timezone
+
+set -e
+
+timezone=$(timedatectl list-timezones | yavaos-menu-select "$(yavaos-i18n timezone.setTitle)" -- --width 520 --maxheight 520) || exit 1
+sudo timedatectl set-timezone "$timezone"
+yavaos-shell -q yavaos.clock refresh
+yavaos-notification-send "$(yavaos-i18n timezone.changed "$timezone")"

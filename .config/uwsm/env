@@ -1,0 +1,3 @@
+# User session paths for these dotfiles.
+export PATH="$HOME/.local/bin:$PATH"
+[ ! -f "$HOME/.config/uwsm/default" ] || . "$HOME/.config/uwsm/default"

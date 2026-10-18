@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "yavaos.disk-speedtest",
+  "name": "Disk speed test",
+  "version": "1.0.0",
+  "author": "YavaOS",
+  "description": "Live disk write and read speed dials. Summon with: yavaos-shell shell summon yavaos.disk-speedtest",
+  "kinds": [
+    "panel"
+  ],
+  "entryPoints": {
+    "panel": "Panel.qml"
+  }
+}

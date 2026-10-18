@@ -1,0 +1,17 @@
+-- YavaOS desktop configuration.
+dofile(os.getenv("HOME") .. "/.config/hypr/bootstrap.lua")
+yavaos_global_workspaces = true
+require("hypr.helpers")
+require("hypr.autostart")
+require("hypr.monitor-workspaces")
+require("hypr.monitors")
+require("hypr.bindings")
+require("hypr.qconsole")
+require("hypr.input")
+require("hypr.looknfeel")
+require("hypr.envs")
+require("hypr.theme")
+require("hypr.windows")
+require("hypr.dictation-backend")
+require("hypr.apps.hypremoji")
+require("hypr.toggles")

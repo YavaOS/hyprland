@@ -1,0 +1,67 @@
+{
+  "bar": {
+    "background": "none",
+    "layout": {
+      "center": [
+        {
+          "format": "dddd HH:mm",
+          "formatAlt": "d MMMM 'W'ww yyyy",
+          "id": "yavaos.clock",
+          "verticalFormat": "HH\n—\nmm"
+        }
+      ],
+      "centerBegin": [],
+      "centerEnd": [
+        {
+          "id": "yavaos.indicators"
+        }
+      ],
+      "left": [
+        {
+          "id": "yavaos.menu"
+        },
+        {
+          "global": true,
+          "id": "yavaos.workspaces"
+        }
+      ],
+      "right": [
+        {
+          "id": "yavaos.tray"
+        },
+        {
+          "id": "yavaos.bluetooth"
+        },
+        {
+          "id": "yavaos.network"
+        },
+        {
+          "id": "yavaos.audio"
+        },
+        {
+          "id": "yavaos.monitor"
+        },
+        {
+          "id": "yavaos.power"
+        }
+      ]
+    },
+    "position": "top"
+  },
+  "dock": {
+    "pinned": [
+      "org.gnome.Nautilus",
+      "chromium",
+      "kitty",
+      "spotify",
+      "obsidian"
+    ],
+    "position": "bottom"
+  },
+  "idle": {
+    "lock": 300,
+    "screensaver": 150
+  },
+  "plugins": [],
+  "version": 1
+}

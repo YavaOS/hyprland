@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# yavaos:summary=Check if a toggle is enabled (flag file exists)
+# yavaos:args=<flag-name>
+
+[[ -f "$HOME/.local/state/yavaos/toggles/$1" ]]

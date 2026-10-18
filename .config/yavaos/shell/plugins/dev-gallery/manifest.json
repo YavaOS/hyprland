@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "yavaos.dev-gallery",
+  "name": "Dev gallery",
+  "version": "1.0.0",
+  "author": "YavaOS",
+  "description": "Visual reference for yavaos-shell common UI components. Summon with: yavaos-shell shell summon yavaos.dev-gallery '{}' (or run: yavaos dev ui-preview).",
+  "kinds": [
+    "panel"
+  ],
+  "entryPoints": {
+    "panel": "GalleryPanel.qml"
+  }
+}

@@ -1,0 +1,39 @@
+#!/bin/bash
+# yavaos:summary=Apply a local theme
+# yavaos:args=<theme-name>
+set -euo pipefail
+name=${1:-}
+[[ $name =~ ^[a-z0-9][a-z0-9-]*$ ]] || { echo "Usage: yavaos-theme-set <theme-name>" >&2; exit 2; }
+source_dir="$HOME/.config/yavaos/themes/$name"
+[[ -d $source_dir ]] || { echo "Unknown theme: $name" >&2; exit 1; }
+current="$HOME/.config/yavaos/current"
+mkdir -p "$current"
+staging=$(mktemp -d "$current/.theme-next.XXXXXXXX")
+cleanup() { [[ -d $staging ]] && rm -rf -- "$staging"; }
+trap cleanup EXIT
+cp -a "$source_dir/." "$staging/"
+if [[ ! -f $staging/colors.toml ]]; then
+  yavaos-theme-colors-from-alacritty "$staging"
+fi
+[[ -f $staging/colors.toml ]] || { echo "Theme has no colors.toml: $name" >&2; exit 1; }
+YAVAOS_NEXT_THEME_DIR="$staging" yavaos-theme-set-templates
+previous="$current/theme.previous.$(date +%s%N)"
+if [[ -e $current/theme || -L $current/theme ]]; then
+  mv -- "$current/theme" "$previous"
+fi
+mv -- "$staging" "$current/theme"
+trap - EXIT
+printf '%s\n' "$name" >"$current/theme.name"
+background="$current/background"
+if [[ -L $background && ! -e $background ]]; then
+  rm -- "$background"
+fi
+if [[ ! -e $background ]]; then
+  first=$(find "$current/theme/backgrounds" -maxdepth 1 -type f -print -quit 2>/dev/null)
+  [[ -z $first ]] || ln -s "$first" "$background"
+fi
+if [[ -e $background ]]; then
+  yavaos-shell -q background set "$(realpath "$background")" || true
+fi
+yavaos-shell -q shell applyTheme "$(base64 -w 0 "$current/theme/colors.toml")" "$(base64 -w 0 "$current/theme/shell.toml")" || true
+hyprctl reload >/dev/null 2>&1 || true

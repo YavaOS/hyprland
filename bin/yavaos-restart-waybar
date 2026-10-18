@@ -1,3 +1,0 @@
-#!/bin/bash
-
-yavaos-restart-app waybar

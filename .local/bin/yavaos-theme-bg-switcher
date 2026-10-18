@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# yavaos:summary=Open the YavaOS background switcher
+# yavaos:group=theme
+# yavaos:name=bg-switcher
+# yavaos:aliases=yavaos background
+
+theme_name=$(cat "$HOME/.config/yavaos/current/theme.name" 2>/dev/null)
+current_background=$(readlink -f "$HOME/.config/yavaos/current/background" 2>/dev/null)
+
+yavaos-menu-images \
+  --selected "$current_background" \
+  "$HOME/.config/yavaos/current/theme/backgrounds" \
+  "$HOME/.config/yavaos/backgrounds/$theme_name"

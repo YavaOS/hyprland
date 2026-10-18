@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# Overwrite the user config for hyprsunset with the YavaOS default and restart the service.
-#
-yavaos-refresh-config hypr/hyprsunset.conf
-yavaos-restart-hyprsunset

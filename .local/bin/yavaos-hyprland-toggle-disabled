@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# yavaos:summary=Check if a Hyprland toggle is currently disabled (missing).
+# yavaos:args=<flag-name>
+
+[[ ! -f "$HOME/.local/state/yavaos/toggles/hypr/$1.lua" ]]

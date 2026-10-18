@@ -1,0 +1,11 @@
+require("hypr.bindings.media")
+require("hypr.bindings.clipboard")
+require("hypr.bindings.tiling")
+require("hypr.bindings.utilities")
+require("hypr.bindings.input-method")
+require("hypr.bindings.jis")
+require("hypr.bindings.dictation")
+require("hypr.require_optional").module("hypr.bindings.applications")
+
+o.bind("SUPER + E", "File manager", { yavaos = "nautilus" })
+o.bind("SUPER + SHIFT + W", "Typora", "uwsm-app -- typora --enable-wayland-ime")

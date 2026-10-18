@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Overwrite the user config for hyprlock with the YavaOS default.
-
-yavaos-refresh-config hypr/hyprlock.conf

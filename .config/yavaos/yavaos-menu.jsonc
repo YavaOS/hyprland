@@ -1,0 +1,18 @@
+{
+  "apps": {"icon":"󰀻","label":"Apps","provider":"apps"},
+  "style": {"icon":"","label":"Style"},
+  "style.theme": {"icon":"󰸌","label":"Theme","aliases":["theme","themes"],"action":"yavaos-shell shell summon yavaos.image-picker '{\"source\":\"themes\"}'"},
+  "style.background": {"icon":"","label":"Background","aliases":["background","wallpaper"],"action":"yavaos-theme-bg-next"},
+  "style.hyprland": {"icon":"","label":"Hyprland","action":"xdg-terminal-exec -e ${EDITOR:-nvim} ~/.config/hypr/looknfeel.lua"},
+  "capture": {"icon":"","label":"Capture"},
+  "capture.screenshot": {"icon":"","label":"Screenshot","action":"yavaos-capture-screenshot"},
+  "capture.record": {"icon":"","label":"Screen recording","action":"yavaos-capture-screenrecording"},
+  "toggle": {"icon":"󰔎","label":"Toggle"},
+  "toggle.bar": {"icon":"󰍜","label":"Bar","action":"yavaos-toggle-bar"},
+  "toggle.nightlight": {"icon":"󰔎","label":"Nightlight","action":"yavaos-toggle-nightlight"},
+  "system": {"icon":"","label":"System","aliases":["power-menu"]},
+  "system.lock": {"icon":"","label":"Lock","action":"hyprlock"},
+  "system.logout": {"icon":"󰍃","label":"Logout","action":"uwsm stop"},
+  "system.reboot": {"icon":"󰜉","label":"Reboot","action":"systemctl reboot"},
+  "system.shutdown": {"icon":"󰐥","label":"Shutdown","action":"systemctl poweroff"}
+}

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# yavaos:summary=Send the low battery warning notification and run battery-low hooks.
+# yavaos:args=<percentage>
+# yavaos:hidden=true
+
+set -euo pipefail
+
+if (($# != 1)); then
+  echo "Usage: yavaos-battery-low <percentage>" >&2
+  exit 1
+fi
+
+level=$1
+
+yavaos-notification-send -g 󱐋 -u critical "$(yavaos-i18n battery.lowTitle)" "$(yavaos-i18n battery.lowBody "$level")" -i battery-caution -t 30000
+yavaos-hook battery-low "$level"

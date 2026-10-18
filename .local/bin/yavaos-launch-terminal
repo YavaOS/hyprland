@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# yavaos:summary=Launch a terminal in the active terminal's current directory
+# yavaos:args=[--pid=<terminal-pid>] [command...]
+
+pid=""
+if [[ ${1:-} == --pid=* ]]; then
+  pid=${1#--pid=}
+  shift
+fi
+
+exec setsid uwsm-app -- xdg-terminal-exec --dir="$(yavaos-cmd-terminal-cwd "$pid")" "$@"

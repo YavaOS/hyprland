@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# yavaos:summary=Wake displays and restore brightness after idle
+# yavaos:group=system
+# yavaos:name=wake
+# yavaos:examples=yavaos system wake
+
+yavaos-brightness-display on
+yavaos-brightness-keyboard restore
+yavaos-hyprland-monitor-clamshell >/dev/null 2>&1 || true

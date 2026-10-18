@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# yavaos:summary=Returns true when clamshell mode is active
+# yavaos:hidden=true
+
+# Clamshell = lid closed while driving one or more external monitors.
+yavaos-hw-laptop-closed && yavaos-hw-external-monitors

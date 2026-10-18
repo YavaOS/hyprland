@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "yavaos.battery",
+  "name": "Battery",
+  "version": "1.0.0",
+  "author": "YavaOS",
+  "description": "Low battery warning service",
+  "kinds": [
+    "service"
+  ],
+  "entryPoints": {
+    "service": "Service.qml"
+  }
+}

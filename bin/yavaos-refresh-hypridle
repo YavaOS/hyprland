@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# Overwrite the user config for hypridle with the YavaOS default and restart the service.
-
-yavaos-refresh-config hypr/hypridle.conf
-yavaos-restart-hypridle

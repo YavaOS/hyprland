@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# yavaos:summary=Take a screenshot
+# yavaos:group=capture
+# yavaos:args=[smart|region|windows|fullscreen|scroll] [copy|save]
+# yavaos:examples=yavaos screenshot | yavaos capture screenshot region
+# yavaos:aliases=yavaos screenshot
+
+if [[ -n ${YAVAOS_SCREENSHOT_DIR:-} && -z ${OMASNAP_SCREENSHOT_DIR:-} ]]; then
+  export OMASNAP_SCREENSHOT_DIR="$YAVAOS_SCREENSHOT_DIR"
+fi
+
+omasnap_args=()
+for arg in "$@"; do
+  case "$arg" in
+    copy) omasnap_args+=(--copy) ;;
+    save) omasnap_args+=(--save) ;;
+    slurp) ;;
+    *) omasnap_args+=("$arg") ;;
+  esac
+done
+
+exec omasnap "${omasnap_args[@]}"
