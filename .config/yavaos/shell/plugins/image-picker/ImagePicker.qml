@@ -16,7 +16,7 @@ Item {
   property string yavaosPath: Quickshell.env("HOME")
   property string stateHome: Quickshell.env("HOME") + "/.local/state"
   property string userThemesPath: Quickshell.env("HOME") + "/.config/yavaos/themes"
-  property string imageDirs: Quickshell.env("YAVAOS_IMAGE_SELECTOR_DIRS") || Quickshell.env("YAVAOS_IMAGE_SELECTOR_DIR") || Quickshell.env("YAVAOS_STOCK_BACKGROUNDS_DIR") || (home + "/.config/yavaos/current/theme/backgrounds")
+  property string imageDirs: Quickshell.env("YAVAOS_IMAGE_SELECTOR_DIRS") || Quickshell.env("YAVAOS_IMAGE_SELECTOR_DIR") || Quickshell.env("YAVAOS_STOCK_BACKGROUNDS_DIR") || (yavaosPath + "/.config/yavaos/current/theme/backgrounds")
   property string imageRows: ""
   property string loadedImageRows: ""
   property string selectionFile: Quickshell.env("YAVAOS_IMAGE_SELECTOR_SELECTION_FILE") || Quickshell.env("YAVAOS_BACKGROUND_SELECTION_FILE")
@@ -455,7 +455,7 @@ Item {
 
   FileView {
     id: themeNameFile
-    path: root.home + "/.config/yavaos/current/theme.name"
+    path: root.yavaosPath + "/.config/yavaos/current/theme.name"
     watchChanges: true
     onFileChanged: reload()
   }
@@ -463,7 +463,7 @@ Item {
   Process {
     id: themeRowsProc
     property bool queued: false
-    command: [root.yavaosPath + "/.local/bin/yavaos-theme-switcher", "--print-rows"]
+    command: ["yavaos-theme-switcher", "--print-rows"]
     stdout: StdioCollector {
       onStreamFinished: root.updateThemeRows(String(text || "").trim())
     }
