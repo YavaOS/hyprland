@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "YavaOS Soft Glass",
+  "version": "1.0.0",
+  "description": "Subdued Catppuccin chrome to match Kitty and VS Code.",
+  "theme": {
+    "colors": {
+      "frame": [22, 22, 34],
+      "frame_inactive": [22, 22, 34],
+      "toolbar": [30, 30, 46],
+      "tab_text": [137, 180, 250],
+      "tab_background_text": [147, 153, 178],
+      "bookmark_text": [205, 214, 244],
+      "ntp_background": [30, 30, 46],
+      "ntp_text": [205, 214, 244],
+      "ntp_link": [137, 180, 250],
+      "button_background": [30, 30, 46]
+    }
+  }
+}

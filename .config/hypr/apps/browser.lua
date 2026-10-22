@@ -11,8 +11,8 @@ hl.window_rule({ match = { ["class"] = "(chrome-youtube.com__-Default|chrome-app
 -- Force chromium-based browsers into a tile to deal with --app bug
 hl.window_rule({ match = { ["tag"] = "chromium-based-browser" }, tile = true })
 
--- Only a subtle opacity change, but not for video sites
-hl.window_rule({ match = { ["tag"] = "chromium-based-browser" }, opacity = "1.0 0.97" })
+-- Keep browser pages fully opaque; window opacity also fades their content.
+hl.window_rule({ match = { ["tag"] = "chromium-based-browser" }, opacity = "1.0 1.0" })
 hl.window_rule({ match = { ["tag"] = "firefox-based-browser" }, opacity = "1.0 0.97" })
 
 -- Video app classes from the base desktop.
