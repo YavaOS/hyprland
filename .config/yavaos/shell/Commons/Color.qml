@@ -76,6 +76,14 @@ QtObject {
     return Util.alpha(flatColor(pick(colorKey, colorFallback), colorFallback), pickAlpha(alphaKey, alphaFallback))
   }
 
+  function glassColor(base) {
+    return Qt.rgba(
+      base.r * 0.85 + accent.r * 0.15,
+      base.g * 0.85 + accent.g * 0.15,
+      base.b * 0.85 + accent.b * 0.15,
+      Math.min(base.a, 0.42))
+  }
+
   readonly property QtObject bar: QtObject {
     property color background: root.composed("bar.background", "bar.background-alpha", root.background, 1.0)
     property color text: root.pick("bar.text", root.foreground)

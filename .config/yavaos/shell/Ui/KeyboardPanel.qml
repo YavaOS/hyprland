@@ -405,7 +405,9 @@ PanelWindow {
     y: root.cardOrigin.y
     width: root.contentWidth
     height: root.contentHeight
-    color: Commons.Color.popups.background
+    color: root.bar && root.bar.glassy
+      ? Commons.Color.glassColor(Commons.Color.popups.background)
+      : Commons.Color.popups.background
     borderSpec: root.borderSpec
     padding: root.padding
     radius: Style.cornerRadius

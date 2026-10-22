@@ -278,10 +278,11 @@ cmd_transparent() {
 sync_glass() {
   local dir="${XDG_STATE_HOME:-$HOME/.local/state}/yavaos/toggles/hypr"
   local flag="$dir/bar-glassy.lua"
+  local source="$HOME/.config/hypr/toggles/bar-glassy.lua"
 
   if [[ $(current_background) == "glassy" ]]; then
-    [[ ! -f $flag ]] || return 0
-    mkdir -p "$dir" && cp "$HOME/.config/hypr/defaults/toggles/bar-glassy.lua" "$flag" || return 1
+    [[ ! -f $flag ]] || ! cmp -s "$source" "$flag" || return 0
+    mkdir -p "$dir" && cp "$source" "$flag" || return 1
   else
     [[ -f $flag ]] || return 0
     rm -f "$flag" || return 1
