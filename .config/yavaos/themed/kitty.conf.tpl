@@ -11,7 +11,12 @@ cursor_text_color {{ background }}
 dynamic_background_opacity yes
 
 active_border_color {{ accent }}
-active_tab_background {{ accent }}
+active_tab_background {{ background }}
+active_tab_foreground {{ accent }}
+inactive_tab_background {{ background }}
+inactive_tab_foreground {{ muted }}
+tab_bar_background {{ background }}
+bell_border_color {{ accent }}
 
 color0 {{ background }}
 color1 {{ red }}
