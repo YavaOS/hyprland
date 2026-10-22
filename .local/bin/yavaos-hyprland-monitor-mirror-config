@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# yavaos:summary=Persist the monitor layout mirror setting
+# yavaos:args=<on|off>
+
+set -euo pipefail
+
+case "${1:-}" in
+  on) value=true ;;
+  off) value=false ;;
+  *) echo "Usage: $(basename "$0") {on|off}" >&2; exit 1 ;;
+esac
+
+config="${XDG_CONFIG_HOME:-$HOME/.config}/hypr/monitors.lua"
+if [[ ! -f "$config" ]] || ! grep -Eq '^local mirror = (true|false)$' "$config"; then
+  echo "Monitor mirror setting not found in $config" >&2
+  exit 1
+fi
+
+sed -i -E "s/^local mirror = (true|false)$/local mirror = $value/" "$config"
+hyprctl reload

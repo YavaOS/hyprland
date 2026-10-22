@@ -78,6 +78,7 @@ Panel {
     if (brightnessAvailable) list.push("brightness")
     list.push("textsize")
     list.push("scale")
+    if (internalMonitor && externalMonitor) list.push("mirror")
     if (displays.length > 1) list.push("monitors")
     return list
   }
@@ -86,6 +87,7 @@ Panel {
     if (section === "brightness") return 0  // only the slider sentinel at -1
     if (section === "textsize") return 0    // slider sentinel at -1, like brightness
     if (section === "scale") return scaleValues.length
+    if (section === "mirror") return 1
     if (section === "monitors") return displays.length
     return 0
   }
@@ -150,6 +152,10 @@ Panel {
   function activateCursor() {
     if (focusSection === "scale" && selectedIndex >= 0 && selectedIndex < scaleValues.length) {
       setScale(scaleValues[selectedIndex])
+      return
+    }
+    if (focusSection === "mirror") {
+      toggleMirror()
       return
     }
     if (focusSection === "monitors" && selectedIndex >= 0 && selectedIndex < displays.length) {
@@ -315,6 +321,12 @@ Panel {
   function setScale(scale) {
     actionProc.command = ["bash", "-c", "yavaos-hyprland-monitor-scaling " + scale]
     if (!actionProc.running) actionProc.running = true
+  }
+
+  function toggleMirror() {
+    if (!internalMonitor || !externalMonitor || actionProc.running) return
+    actionProc.command = ["yavaos-hyprland-monitor-mirror-config", mirrorEnabled ? "off" : "on"]
+    actionProc.running = true
   }
 
   // ---- Text size (shell base font + GTK text-scaling, via one CLI) ----
@@ -798,6 +810,51 @@ Panel {
                   width: scaleRow.cellWidth
                 }
               }
+            }
+          }
+
+          // ---------- Monitors ----------
+          PanelSeparator {
+            visible: root.internalMonitor !== "" && root.externalMonitor !== ""
+            foreground: root.bar.foreground
+          }
+
+          CursorSurface {
+            id: mirrorRow
+            visible: root.internalMonitor !== "" && root.externalMonitor !== ""
+            width: parent.width
+            implicitHeight: mirrorLabel.implicitHeight + Style.spacing.xl
+            hasCursor: root.cursorActive && root.focusSection === "mirror"
+            onHasCursorChanged: if (hasCursor) root.ensureCursorVisible(mirrorRow)
+            current: root.mirrorEnabled
+            foreground: root.bar.foreground
+            fill: Style.hoverFillFor(root.bar.foreground, Commons.Color.accent)
+            currentFill: Style.selectedFillFor(root.bar.foreground, Commons.Color.accent)
+
+            Text {
+              id: mirrorLabel
+              anchors.left: parent.left
+              anchors.right: parent.right
+              anchors.verticalCenter: parent.verticalCenter
+              anchors.leftMargin: Style.space(10)
+              anchors.rightMargin: Style.space(10)
+              text: Commons.I18n.t("monitor.mirror") + (root.mirrorEnabled ? "  󰄬" : "")
+              textFormat: Text.PlainText
+              color: root.bar.foreground
+              font.family: root.bar.fontFamily
+              font.pixelSize: Style.font.body
+            }
+
+            MouseArea {
+              anchors.fill: parent
+              hoverEnabled: true
+              cursorShape: Qt.PointingHandCursor
+              onContainsMouseChanged: if (containsMouse && !root.reflowingText) {
+                root.cursorActive = true
+                root.focusSection = "mirror"
+                root.selectedIndex = 0
+              }
+              onClicked: root.toggleMirror()
             }
           }
 
