@@ -1,0 +1,30 @@
+{
+  "colors": {
+    "frame": "#161622",
+    "frame_inactive": "#101019",
+    "toolbar": "#1e1e2e",
+    "toolbar_text": "#cdd6f4",
+    "tab_selected": "#1e1e2e",
+    "tab_text": "#cdd6f4",
+    "tab_background_text": "#bac2de",
+    "toolbar_field": "#313244",
+    "toolbar_field_text": "#cdd6f4",
+    "toolbar_field_border": "#585b70",
+    "toolbar_field_focus": "#1e1e2e",
+    "toolbar_field_text_focus": "#cdd6f4",
+    "toolbar_field_border_focus": "#89b4fa",
+    "button_background_hover": "#313244",
+    "button_background_active": "#89b4fa",
+    "popup": "#1e1e2e",
+    "popup_text": "#cdd6f4",
+    "popup_border": "#585b70",
+    "popup_highlight": "#89b4fa",
+    "popup_highlight_text": "#1e1e2e",
+    "ntp_background": "#1e1e2e",
+    "ntp_text": "#cdd6f4",
+    "sidebar": "#1e1e2e",
+    "sidebar_text": "#cdd6f4",
+    "sidebar_highlight": "#89b4fa",
+    "sidebar_highlight_text": "#1e1e2e"
+  }
+}

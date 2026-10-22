@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+"""Prepare Firefox profiles for YavaOS menu styling and native theme sync."""
+
+import configparser
+import json
+import os
+from pathlib import Path
+
+
+def main():
+    home = Path.home()
+    firefox = home / ".mozilla/firefox"
+    profiles = configparser.ConfigParser()
+    profiles.read(firefox / "profiles.ini")
+    theme_css = home / ".config/yavaos/current/theme/firefox.css"
+    for section in profiles.sections():
+        if not section.startswith("Profile"):
+            continue
+        location = Path(profiles[section]["Path"])
+        if profiles[section].get("IsRelative", "1") == "1":
+            location = firefox / location
+        if not location.is_dir():
+            continue
+        chrome = location / "chrome"
+        chrome.mkdir(exist_ok=True)
+        import_line = '@import url("yavaos-firefox.css");'
+        user_chrome = chrome / "userChrome.css"
+        existing = user_chrome.read_text() if user_chrome.exists() else ""
+        if import_line not in existing:
+            user_chrome.write_text(import_line + "\n" + existing)
+        link = chrome / "yavaos-firefox.css"
+        if link.is_symlink() and link.resolve(strict=False) != theme_css:
+            link.unlink()
+        if not link.exists() and not link.is_symlink():
+            link.symlink_to(theme_css)
+        user_js = location / "user.js"
+        pref = 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);'
+        existing = user_js.read_text() if user_js.exists() else ""
+        if pref not in existing:
+            user_js.write_text(existing + ("\n" if existing and not existing.endswith("\n") else "") + pref + "\n")
+
+    host = Path(__file__).with_name("yavaos-firefox-theme-host").resolve()
+    registry = home / ".mozilla/native-messaging-hosts"
+    registry.mkdir(parents=True, exist_ok=True)
+    manifest = {
+        "name": "local.yavaos.firefox_theme",
+        "description": "Read the active YavaOS Firefox theme",
+        "path": str(host),
+        "type": "stdio",
+        "allowed_extensions": ["firefox-theme@yavaos.local"],
+    }
+    (registry / "local.yavaos.firefox_theme.json").write_text(json.dumps(manifest, indent=2) + "\n")
+
+
+if __name__ == "__main__":
+    main()

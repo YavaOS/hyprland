@@ -1,0 +1,91 @@
+/* Loaded by Firefox on every start; generated from the selected YavaOS theme. */
+:root {
+  --lwt-accent-color: #161622 !important;
+  --lwt-text-color: #cdd6f4 !important;
+  --toolbar-bgcolor: #1e1e2e !important;
+  --toolbar-color: #cdd6f4 !important;
+  --toolbar-field-background-color: #313244 !important;
+  --toolbar-field-color: #cdd6f4 !important;
+  --toolbar-field-border-color: #585b70 !important;
+  --toolbar-field-focus-background-color: #1e1e2e !important;
+  --toolbar-field-focus-color: #cdd6f4 !important;
+  --toolbar-field-focus-border-color: #89b4fa !important;
+  --tab-selected-bgcolor: #1e1e2e !important;
+  --tab-selected-textcolor: #cdd6f4 !important;
+  --arrowpanel-background: #1e1e2eee !important;
+  --arrowpanel-color: #cdd6f4 !important;
+  --arrowpanel-border-color: #585b70 !important;
+  --panel-background: #1e1e2eee !important;
+  --panel-color: #cdd6f4 !important;
+  --panel-border-color: #585b70 !important;
+  --sidebar-background-color: #1e1e2e !important;
+  --sidebar-text-color: #cdd6f4 !important;
+  --sidebar-border-color: #585b70 !important;
+  --yavaos-menu-bg: #1e1e2eee;
+  --yavaos-menu-fg: #cdd6f4;
+  --yavaos-menu-accent: #89b4fa;
+  --yavaos-menu-hover: #313244;
+}
+
+#navigator-toolbox,
+#TabsToolbar,
+#nav-bar,
+#PersonalToolbar {
+  background-color: #1e1e2e !important;
+  color: #cdd6f4 !important;
+}
+
+#TabsToolbar {
+  background-color: #161622 !important;
+}
+
+#urlbar-background,
+#searchbar {
+  background-color: #313244 !important;
+  color: #cdd6f4 !important;
+  border-color: #585b70 !important;
+}
+
+#urlbar[focused] #urlbar-background {
+  border-color: #89b4fa !important;
+}
+
+.tab-background[selected] {
+  background: #1e1e2e !important;
+  border-top: 2px solid #89b4fa !important;
+}
+
+.tab-label[selected] {
+  color: #cdd6f4 !important;
+}
+
+#sidebar-box,
+#sidebar-header {
+  background: #1e1e2e !important;
+  color: #cdd6f4 !important;
+}
+
+menupopup,
+panel[type="arrow"] {
+  --panel-background: var(--yavaos-menu-bg) !important;
+  --panel-color: var(--yavaos-menu-fg) !important;
+  --arrowpanel-background: var(--yavaos-menu-bg) !important;
+  --arrowpanel-color: var(--yavaos-menu-fg) !important;
+}
+
+menupopup > menu,
+menupopup > menuitem,
+.subviewbutton {
+  color: var(--yavaos-menu-fg) !important;
+}
+
+menupopup > :is(menu, menuitem):hover,
+.subviewbutton:hover {
+  background-color: var(--yavaos-menu-hover) !important;
+}
+
+/* This blurs content behind an in-window menu where Firefox supports it. */
+menupopup::part(content),
+panel::part(content) {
+  backdrop-filter: blur(18px) !important;
+}

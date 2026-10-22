@@ -24,6 +24,10 @@ fi
 mv -- "$staging" "$current/theme"
 trap - EXIT
 printf '%s\n' "$name" >"$current/theme.name"
+chrome_theme_manifest="$HOME/.config/chromium/extensions/chrome-theme/manifest.json"
+if [[ -f $current/theme/chromium-theme.json && -d ${chrome_theme_manifest%/*} ]]; then
+  cp -- "$current/theme/chromium-theme.json" "$chrome_theme_manifest"
+fi
 background="$current/background"
 if [[ -L $background && ! -e $background ]]; then
   rm -- "$background"

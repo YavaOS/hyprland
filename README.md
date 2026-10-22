@@ -22,3 +22,19 @@ Ensure `$HOME/.local/bin` is in your `PATH`. When launching Hyprland, select `~/
 - Keep your own overrides in the personal configs; shared Hyprland defaults live in `~/.config/hypr/defaults` and theme templates in `~/.config/yavaos/themed`.
 
 The copy commands overwrite matching files. Back up any existing configuration you want to keep before running them.
+
+## Firefox theme
+
+Run `yavaos-firefox-theme-setup` once to connect Firefox profiles to the
+generated browser CSS. Firefox loads it on every start without an add-on or
+signature. Restart Firefox once to enable `userChrome.css`; after later theme
+changes, restart Firefox to pick up the new toolbar, tab, sidebar, and menu
+colors.
+
+For live colors without restarting Firefox, install the optional add-on in
+`.config/yavaos/firefox-theme/`. It reads the generated
+`~/.config/yavaos/current/theme/firefox-theme.json` through the native host
+every two seconds and calls Firefox's theme API when it changes. Firefox
+release builds require the add-on to be signed for permanent installation;
+`about:debugging` can load it temporarily for development. The menu CSS is
+separate from the live theme API and still needs a browser restart.

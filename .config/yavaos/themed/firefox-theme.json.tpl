@@ -1,0 +1,30 @@
+{
+  "colors": {
+    "frame": "{{ dark_background }}",
+    "frame_inactive": "{{ darker_background }}",
+    "toolbar": "{{ background }}",
+    "toolbar_text": "{{ foreground }}",
+    "tab_selected": "{{ background }}",
+    "tab_text": "{{ foreground }}",
+    "tab_background_text": "{{ light_foreground }}",
+    "toolbar_field": "{{ lighter_background }}",
+    "toolbar_field_text": "{{ foreground }}",
+    "toolbar_field_border": "{{ muted }}",
+    "toolbar_field_focus": "{{ background }}",
+    "toolbar_field_text_focus": "{{ foreground }}",
+    "toolbar_field_border_focus": "{{ accent }}",
+    "button_background_hover": "{{ lighter_background }}",
+    "button_background_active": "{{ accent }}",
+    "popup": "{{ background }}",
+    "popup_text": "{{ foreground }}",
+    "popup_border": "{{ muted }}",
+    "popup_highlight": "{{ accent }}",
+    "popup_highlight_text": "{{ background }}",
+    "ntp_background": "{{ background }}",
+    "ntp_text": "{{ foreground }}",
+    "sidebar": "{{ background }}",
+    "sidebar_text": "{{ foreground }}",
+    "sidebar_highlight": "{{ accent }}",
+    "sidebar_highlight_text": "{{ background }}"
+  }
+}

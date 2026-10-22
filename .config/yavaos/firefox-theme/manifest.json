@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "YavaOS Firefox Theme",
+  "version": "1.0",
+  "description": "Keeps Firefox colors in sync with the active YavaOS theme.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "firefox-theme@yavaos.local"
+    }
+  },
+  "permissions": ["theme", "nativeMessaging"],
+  "background": { "scripts": ["background.js"] }
+}
