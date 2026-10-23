@@ -1,6 +1,10 @@
 [SddmGreeterTheme]
-Name=YavaOS
-Description=Minimal login theme
+Name=YavaOS Glass
+Description=Frosted glass login screen with the current YavaOS wallpaper
 Author=YavaOS
 Type=sddm-theme
-Version=1.0
+Version=2.0
+MainScript=Main.qml
+ConfigFile=theme.conf
+Theme-Id=yavaos
+Theme-API=2.0
