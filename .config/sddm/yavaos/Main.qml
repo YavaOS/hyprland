@@ -1,6 +1,4 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Effects
 
 Rectangle {
     id: root
@@ -46,40 +44,26 @@ Rectangle {
     Rectangle {
         id: card
         width: Math.min(440, root.width - 40)
-        height: 438
+        height: 350
         anchors.centerIn: parent
         radius: 24
         color: "transparent"
-        Rectangle {
-            id: cardMask
-            anchors.fill: parent
-            radius: card.radius
-            visible: false
-            layer.enabled: true
+        clip: true
+
+        // This image uses the same crop and position as the wallpaper.
+        // Clipping it to the card gives a consistent frosted backdrop in Qt 5 and 6.
+        Image {
+            x: -card.x
+            y: -card.y
+            width: root.width
+            height: root.height
+            source: "background-blur.jpg"
+            fillMode: Image.PreserveAspectCrop
         }
 
-        Item {
+        Rectangle {
             anchors.fill: parent
-            layer.enabled: true
-            layer.effect: MultiEffect {
-                maskEnabled: true
-                maskSource: cardMask
-            }
-
-            // Match the wallpaper crop before masking the card's rounded edges.
-            Image {
-                x: -card.x
-                y: -card.y
-                width: root.width
-                height: root.height
-                source: "background-blur.jpg"
-                fillMode: Image.PreserveAspectCrop
-            }
-
-            Rectangle {
-                anchors.fill: parent
-                color: "#b91e1e2e"
-            }
+            color: "#b91e1e2e"
         }
 
         Column {
@@ -134,94 +118,6 @@ Rectangle {
                     enabled: !root.busy
                     Keys.onReturnPressed: root.login()
                     Keys.onEnterPressed: root.login()
-                }
-            }
-
-            Text {
-                text: "DESKTOP"
-                color: "#bac2de"
-                font.family: "VictorMono Nerd Font"
-                font.pixelSize: 11
-                font.bold: true
-            }
-
-            ComboBox {
-                id: desktopSelector
-                width: parent.width
-                height: 44
-                model: sessionModel
-                textRole: "name"
-                currentIndex: root.sessionIndex
-                enabled: !root.busy
-                onActivated: root.sessionIndex = index
-
-                font.family: "VictorMono Nerd Font"
-                font.pixelSize: 14
-
-                contentItem: Text {
-                    leftPadding: 15
-                    rightPadding: desktopSelector.indicator.width + 15
-                    text: desktopSelector.displayText
-                    color: "#f5e0dc"
-                    font: desktopSelector.font
-                    verticalAlignment: Text.AlignVCenter
-                    elide: Text.ElideRight
-                }
-
-                indicator: Text {
-                    x: desktopSelector.width - width - 15
-                    height: desktopSelector.height
-                    text: "⌄"
-                    color: "#cdd6f4"
-                    font.pixelSize: 20
-                    verticalAlignment: Text.AlignVCenter
-                }
-
-                background: Rectangle {
-                    radius: 10
-                    color: "#9c11111b"
-                    border.color: desktopSelector.activeFocus ? "#89b4fa" : "#66cdd6f4"
-                    border.width: 1
-                }
-
-                popup: Popup {
-                    y: desktopSelector.height + 4
-                    width: desktopSelector.width
-                    implicitHeight: Math.min(contentItem.implicitHeight + 8, 240)
-                    padding: 4
-
-                    contentItem: ListView {
-                        clip: true
-                        implicitHeight: contentHeight
-                        model: desktopSelector.popup.visible ? desktopSelector.delegateModel : null
-                        currentIndex: desktopSelector.highlightedIndex
-                        ScrollIndicator.vertical: ScrollIndicator { }
-                    }
-
-                    background: Rectangle {
-                        radius: 10
-                        color: "#e91e1e2e"
-                        border.color: "#70ffffff"
-                    }
-                }
-
-                delegate: ItemDelegate {
-                    width: desktopSelector.width - 8
-                    height: 38
-                    text: model.name
-                    highlighted: desktopSelector.highlightedIndex === index
-                    font: desktopSelector.font
-                    contentItem: Text {
-                        text: parent.text
-                        color: "#f5e0dc"
-                        font: desktopSelector.font
-                        verticalAlignment: Text.AlignVCenter
-                        elide: Text.ElideRight
-                    }
-                    background: Rectangle {
-                        radius: 7
-                        color: parent.highlighted ? "#5589b4fa" : "transparent"
-                    }
                 }
             }
 
