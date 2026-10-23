@@ -33,7 +33,7 @@ o.bind("SHIFT + XF86AudioMute", "Switch audio output", "yavaos-audio-output-swit
 o.bind("SHIFT + XF86AudioPause", "Switch media source", "yavaos-audio-source-switch", { locked = true })
 o.bind("SHIFT + XF86AudioPlay", "Switch media source", "yavaos-audio-source-switch", { locked = true })
 
-o.bind("CTRL + grave", "Toggle mic mute", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
+o.bind("CTRL + code:49", "Mute microphone", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle", { locked = true })
 o.bind("CTRL + F1", "Apple Display brightness down", "yavaos-brightness-display-apple -5000")
 o.bind("CTRL + F2", "Apple Display brightness up", "yavaos-brightness-display-apple +5000")
 o.bind("SHIFT + CTRL + F2", "Apple Display full brightness", "yavaos-brightness-display-apple +60000")

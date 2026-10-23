@@ -39,6 +39,9 @@
           "id": "yavaos.audio"
         },
         {
+          "id": "yavaos.microphone"
+        },
+        {
           "id": "yavaos.monitor"
         },
         {

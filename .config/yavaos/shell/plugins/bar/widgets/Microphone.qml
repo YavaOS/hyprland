@@ -56,6 +56,8 @@ BarWidget {
     anchors.fill: parent
     bar: root.bar
     text: root.muted ? "󰍭" : "󰍬"
+    labelText: root.vertical ? "" : (root.viaWpctl && !UntypedInput.known ? "–" : I18n.formatNumber(Math.round(root.volume * 100)) + "%")
+    slotSize: Style.bar.iconSlot * (root.vertical ? 1 : 2)
     active: root.inUse
     tooltipText: root.muted ? I18n.t("bar.microphoneMuted") : (root.inUse ? I18n.t("bar.microphoneInUse") : I18n.t("bar.microphoneLive"))
     onPressed: function(b) {
