@@ -1,5 +1,5 @@
 o.bind("SUPER + SPACE", "YavaOS menu", { menu = "root" })
-o.bind("SUPER + ALT + SPACE", "Apps", "yavaos-shell yavaos.dock apps")
+o.bind("SUPER + ALT + SPACE", "Apps", { menu = "apps" })
 o.bind("SUPER + CTRL + E", "Emojis", { panel = "yavaos.emojis" })
 o.bind("SUPER + CTRL + C", "Capture menu", { menu = "capture" })
 o.bind("SUPER + CTRL + O", "Toggle menu", { menu = "toggle" })
@@ -130,7 +130,7 @@ end)
 
 o.bind("SUPER + CTRL + L", "Lock system", "yavaos-system-lock")
 
--- Use the existing YavaOS launcher, lock and system menu.
-o.bind("SUPER + SLASH", "Launch apps", "yavaos-shell yavaos.dock apps")
+-- Use the existing YavaOS menu, lock and system menu.
+o.bind("SUPER + SLASH", "Apps", { menu = "apps" })
 o.bind("SUPER + L", "Lock system", "yavaos-system-lock")
 o.bind("XF86PowerOff", "Power menu", { menu = "system" }, { locked = true })

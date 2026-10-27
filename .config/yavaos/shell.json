@@ -51,12 +51,12 @@
     },
     "position": "top"
   },
+  "disabledPlugins": [
+    "yavaos.dock"
+  ],
   "dock": {
     "pinned": [
-      "org.gnome.Nautilus",
       "chromium",
-      "kitty",
-      "spotify",
       "obsidian"
     ],
     "position": "bottom"
