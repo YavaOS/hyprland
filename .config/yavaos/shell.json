@@ -8,9 +8,16 @@
           "formatAlt": "d MMMM 'W'ww yyyy",
           "id": "yavaos.clock",
           "verticalFormat": "HH\n—\nmm"
+        },
+        {
+          "id": "jalali",
+          "format": "d MMMM yyyy",
+          "verticalFormat": "dd\nMMM\nyyyy"
         }
       ],
-      "centerBegin": ["irstats"],
+      "centerBegin": [
+        "stats"
+      ],
       "centerEnd": [
         {
           "id": "yavaos.indicators"
@@ -51,9 +58,14 @@
     },
     "position": "top"
   },
-  "disabledPlugins": ["yavaos.dock"],
+  "disabledPlugins": [
+    "yavaos.dock"
+  ],
   "dock": {
-    "pinned": ["chromium", "obsidian"],
+    "pinned": [
+      "chromium",
+      "obsidian"
+    ],
     "position": "bottom"
   },
   "idle": {

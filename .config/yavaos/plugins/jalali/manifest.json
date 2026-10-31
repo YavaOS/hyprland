@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "jalali",
+  "name": "Jalali Calendar",
+  "version": "1.0.0",
+  "author": "Local",
+  "description": "Persian date and Jalali calendar popup",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Jalali Calendar",
+    "description": "Persian date and Jalali calendar popup",
+    "category": "Time",
+    "allowMultiple": false
+  }
+}
