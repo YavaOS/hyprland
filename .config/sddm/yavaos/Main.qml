@@ -1,4 +1,6 @@
-import QtQuick 2.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Effects
 
 Rectangle {
     id: root
@@ -6,12 +8,12 @@ Rectangle {
     height: 1080
     color: "#1e1e2e"
 
-    property string currentUser: userModel.lastUser
-    property int sessionIndex: sessionModel.lastIndex
+    property string currentUser: userSelect.currentText
+    property int sessionIndex: sessionSelect.currentIndex
     property bool busy: false
 
     function login() {
-        if (busy || password.text.length === 0)
+        if (busy || currentUser.length === 0 || sessionIndex < 0 || password.text.length === 0)
             return
         busy = true
         message.text = "Signing in…"
@@ -44,30 +46,51 @@ Rectangle {
     Rectangle {
         id: card
         width: Math.min(440, root.width - 40)
-        height: 350
+        height: form.implicitHeight + 72
         anchors.centerIn: parent
         radius: 24
         color: "transparent"
-        clip: true
 
-        // This image uses the same crop and position as the wallpaper.
-        // Clipping it to the card gives a consistent frosted backdrop in Qt 5 and 6.
-        Image {
-            x: -card.x
-            y: -card.y
-            width: root.width
-            height: root.height
-            source: "background-blur.jpg"
-            fillMode: Image.PreserveAspectCrop
+        // Rectangle.clip is rectangular even when radius is set. Mask only
+        // the backdrop so the dropdown popups remain outside the card.
+        Rectangle {
+            id: cardMask
+            anchors.fill: parent
+            radius: card.radius
+            layer.enabled: true
+            visible: false
         }
 
-        Rectangle {
+        Item {
             anchors.fill: parent
-            color: "#b91e1e2e"
+            layer.enabled: true
+            layer.effect: MultiEffect {
+                maskEnabled: true
+                maskSource: cardMask
+                maskThresholdMin: 0.5
+                maskSpreadAtMin: 1.0
+            }
+
+            Image {
+                x: -card.x
+                y: -card.y
+                width: root.width
+                height: root.height
+                source: "background-blur.jpg"
+                fillMode: Image.PreserveAspectCrop
+            }
+
+            Rectangle {
+                anchors.fill: parent
+                color: "#b91e1e2e"
+            }
         }
 
         Column {
-            anchors.fill: parent
+            id: form
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: parent.top
             anchors.margins: 36
             spacing: 12
 
@@ -80,13 +103,41 @@ Rectangle {
             }
 
             Text {
-                text: root.currentUser
-                color: "#cdd6f4"
+                text: "USER"
+                color: "#bac2de"
                 font.family: "VictorMono Nerd Font"
-                font.pixelSize: 15
+                font.pixelSize: 11
+                font.bold: true
             }
 
-            Item { width: 1; height: 22 }
+            GlassComboBox {
+                id: userSelect
+                width: parent.width
+                enabled: !root.busy
+                model: userModel
+                currentIndex: userModel.lastIndex >= 0 ? userModel.lastIndex : 0
+                onActivated: {
+                    password.text = ""
+                    message.text = ""
+                    password.forceActiveFocus()
+                }
+            }
+
+            Text {
+                text: "SESSION"
+                color: "#bac2de"
+                font.family: "VictorMono Nerd Font"
+                font.pixelSize: 11
+                font.bold: true
+            }
+
+            GlassComboBox {
+                id: sessionSelect
+                width: parent.width
+                enabled: !root.busy
+                model: sessionModel
+                currentIndex: sessionModel.lastIndex >= 0 ? sessionModel.lastIndex : 0
+            }
 
             Text {
                 text: "PASSWORD"
