@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "stats",
+  "name": "Stats",
+  "version": "1.0.0",
+  "author": "Local",
+  "description": "Live age timer, commute, dollar, and gold stats",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Stats",
+    "description": "Live age timer, commute, dollar, and gold stats",
+    "category": "Info",
+    "allowMultiple": false
+  }
+}

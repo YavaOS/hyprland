@@ -10,7 +10,7 @@
           "verticalFormat": "HH\n—\nmm"
         }
       ],
-      "centerBegin": [],
+      "centerBegin": ["irstats"],
       "centerEnd": [
         {
           "id": "yavaos.indicators"
@@ -51,14 +51,9 @@
     },
     "position": "top"
   },
-  "disabledPlugins": [
-    "yavaos.dock"
-  ],
+  "disabledPlugins": ["yavaos.dock"],
   "dock": {
-    "pinned": [
-      "chromium",
-      "obsidian"
-    ],
+    "pinned": ["chromium", "obsidian"],
     "position": "bottom"
   },
   "idle": {
