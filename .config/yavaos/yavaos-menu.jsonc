@@ -10,6 +10,7 @@
   "toggle": {"icon":"󰔎","label":"Toggle"},
   "toggle.bar": {"icon":"󰍜","label":"Bar","action":"yavaos-toggle-bar"},
   "toggle.nightlight": {"icon":"󰔎","label":"Nightlight","action":"yavaos-toggle-nightlight"},
+  "toggle.input-language-lock": {"icon":"","label":"Language switching lock","description":"Lock Caps Lock language switching · Super+Caps Lock","action":"yavaos-toggle-input-language-lock","checked":"yavaos-toggle-enabled input-language-locked"},
   "system": {"icon":"","label":"System","aliases":["power-menu"]},
   "system.lock": {"icon":"","label":"Lock","action":"hyprlock"},
   "system.logout": {"icon":"󰍃","label":"Logout","action":"uwsm stop"},

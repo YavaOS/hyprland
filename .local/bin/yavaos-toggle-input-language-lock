@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# yavaos:summary=Lock or unlock Caps Lock language switching
+
+set -euo pipefail
+
+yavaos-toggle input-language-locked
+if yavaos-toggle-enabled input-language-locked; then
+  yavaos-notification-send "Language switching locked" "Caps Lock language switching is disabled. Super+Caps Lock unlocks it."
+else
+  yavaos-notification-send "Language switching unlocked" "Caps Lock switches languages again."
+fi

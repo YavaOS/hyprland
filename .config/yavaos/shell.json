@@ -4,15 +4,15 @@
     "layout": {
       "center": [
         {
+          "format": "d MMMM yyyy",
+          "id": "jalali",
+          "verticalFormat": "dd\nMMM\nyyyy"
+        },
+        {
           "format": "dddd HH:mm",
           "formatAlt": "d MMMM 'W'ww yyyy",
           "id": "yavaos.clock",
           "verticalFormat": "HH\n—\nmm"
-        },
-        {
-          "id": "jalali",
-          "format": "d MMMM yyyy",
-          "verticalFormat": "dd\nMMM\nyyyy"
         }
       ],
       "centerBegin": [
@@ -33,6 +33,9 @@
         }
       ],
       "right": [
+        {
+          "id": "yavaos.keyboard-layout"
+        },
         {
           "id": "yavaos.tray"
         },
