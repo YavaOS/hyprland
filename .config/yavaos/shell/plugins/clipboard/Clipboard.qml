@@ -224,9 +224,9 @@ Item {
     if (!row) return
     root.opened = false
     if (row.entryType === "image") {
-      Quickshell.execDetached([root.yavaosPath + "/.local/bin/yavaos-clipboard-paste-file", row.mime, row.path])
+      Quickshell.execDetached(["yavaos-clipboard-paste-file", row.mime, row.path])
     } else if (row.fullText) {
-      Quickshell.execDetached([root.yavaosPath + "/.local/bin/yavaos-clipboard-paste-text", "--shift-insert", "--history-index", String(row.historyIndex)])
+      Quickshell.execDetached(["yavaos-clipboard-paste-text", "--shift-insert", "--history-index", String(row.historyIndex)])
     }
   }
 
@@ -234,16 +234,16 @@ Item {
     if (!row) return
     root.opened = false
     if (row.entryType === "image") {
-      Quickshell.execDetached([root.yavaosPath + "/.local/bin/yavaos-clipboard-paste-file", "--copy-only", row.mime, row.path])
+      Quickshell.execDetached(["yavaos-clipboard-paste-file", "--copy-only", row.mime, row.path])
     } else if (row.fullText) {
-      Quickshell.execDetached([root.yavaosPath + "/.local/bin/yavaos-clipboard-paste-text", "--copy-only", "--history-index", String(row.historyIndex)])
+      Quickshell.execDetached(["yavaos-clipboard-paste-text", "--copy-only", "--history-index", String(row.historyIndex)])
     }
   }
 
   function openSelected(row) {
     if (!row) return
     root.opened = false
-    Quickshell.execDetached([root.yavaosPath + "/.local/bin/yavaos-clipboard-open", "--history-index", String(row.historyIndex)])
+    Quickshell.execDetached(["yavaos-clipboard-open", "--history-index", String(row.historyIndex)])
   }
 
   Component.onCompleted: initProc.running = true
